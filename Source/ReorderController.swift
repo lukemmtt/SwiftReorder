@@ -130,6 +130,13 @@ public class ReorderController: NSObject {
     }
     
     /// The duration of the cell selection animation.
+    
+    public var autoScrollThreshold: CGFloat = 30
+    
+    public var autoScrollMinVelocity: CGFloat = 60
+    
+    public var autoScrollMaxVelocity: CGFloat = 280
+    
     public var animationDuration: TimeInterval = 0.2
     
     /// The opacity of the selected cell.
