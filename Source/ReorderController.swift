@@ -91,6 +91,10 @@ public extension TableViewReorderDelegate {
         return true
     }
     
+    func tableView(_ tableView: UITableView, canReorderRowTo indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, targetIndexPathForReorderFromRowAt sourceIndexPath: IndexPath, to proposedDestinationIndexPath: IndexPath) -> IndexPath {
         return proposedDestinationIndexPath
     }
