@@ -38,7 +38,16 @@ extension ReorderController {
             let proposedNewDestinationRow = proposedNewDestinationRow(),
             let newDestinationRow = delegate?.tableView(tableView, targetIndexPathForReorderFromRowAt: context.destinationRow, to: proposedNewDestinationRow),
             newDestinationRow != context.destinationRow
-        else { return }
+        else {
+            return
+        }
+        
+//        print("proposed newDestinationRow is \(newDestinationRow.row)")
+//        if newDestinationRow.row == 28 ||  newDestinationRow.row == 29  {
+//            print("proposed newDestinationRow.row is locked, not updating")
+//            return
+//        }
+        
         
         var newContext = context
         newContext.destinationRow = newDestinationRow
@@ -47,8 +56,10 @@ extension ReorderController {
         delegate?.tableView(tableView, reorderRowAt: context.destinationRow, to: newContext.destinationRow)
         
         tableView.beginUpdates()
-        tableView.deleteRows(at: [context.destinationRow], with: .fade)
-        tableView.insertRows(at: [newContext.destinationRow], with: .fade)
+        tableView.moveRow(at: newContext.destinationRow, to: context.destinationRow)
+        tableView.moveRow(at: context.destinationRow, to: newContext.destinationRow)
+//        tableView.deleteRows(at: [context.destinationRow], with: .fade)
+//        tableView.insertRows(at: [newContext.destinationRow], with: .fade)
         tableView.endUpdates()
     }
     
