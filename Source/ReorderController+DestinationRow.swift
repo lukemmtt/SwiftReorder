@@ -42,11 +42,10 @@ extension ReorderController {
             return
         }
         
-//        print("proposed newDestinationRow is \(newDestinationRow.row)")
-//        if newDestinationRow.row == 28 ||  newDestinationRow.row == 29  {
-//            print("proposed newDestinationRow.row is locked, not updating")
-//            return
-//        }
+        let reorderAllowed = delegate?.tableView(tableView, canReorderRowTo: newDestinationRow) ?? true
+        if !reorderAllowed {
+            return
+        }
         
         
         var newContext = context
